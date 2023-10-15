@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using PostgreSQL.Data;
 
-namespace PostgreSQL.Data.Extensions;
+namespace PostgreSQL.Extensions;
 
 public static class ProjectManagementDataInstaller
 {
