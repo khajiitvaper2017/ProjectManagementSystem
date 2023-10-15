@@ -1,4 +1,17 @@
+using PostgreSQL.Data;
+using PostgreSQL.Data.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add database context to the container.
+builder.Services.
+    AddProjectManagementData("USER ID=postgres;" +
+                             "Password=postgres;" +
+                             "Server=localhost;" +
+                             "Port=5432;" +
+                             "Database=pms-db;" +
+                             "Integrated Security=true;" +
+                             "Pooling=true");
 
 // Add services to the container.
 
