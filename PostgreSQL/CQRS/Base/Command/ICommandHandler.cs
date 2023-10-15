@@ -1,0 +1,6 @@
+﻿namespace PostgreSQL.CQRS.Base.Command;
+
+public interface ICommandHandler<in TCommand> where TCommand : ICommand
+{
+    Task Handle(TCommand command);
+}
