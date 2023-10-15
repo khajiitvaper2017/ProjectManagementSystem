@@ -18,7 +18,7 @@ public partial class Task
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
-    public int? ProjectId { get; set; }
+    public string? ProjectId { get; set; }
 
     public virtual Project? Project { get; set; }
 }
