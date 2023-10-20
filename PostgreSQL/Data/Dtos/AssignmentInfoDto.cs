@@ -2,11 +2,11 @@ namespace PostgreSQL.Data.Dtos;
 
 public sealed record AssignmentInfoDto
 {
-    public string Id { get; set; }
+    public Guid Id { get; set; }
 
     public DateTime? Date { get; set; }
 
-    public string? TaskId { get; set; }
+    public Guid? TaskId { get; set; }
 
-    public string? UserId { get; set; }
+    public Guid? UserId { get; set; }
 }

@@ -1,9 +1,7 @@
 ﻿namespace PostgreSQL.Data.Entity;
 
-public partial class ProjectEntity
+public sealed class ProjectEntity : AbstractEntity.Entity
 {
-    public string Id { get; set; }
-
     public string? Name { get; set; }
 
     public DateTime? StartDate { get; set; }
@@ -12,5 +10,5 @@ public partial class ProjectEntity
 
     public string? Description { get; set; }
 
-    public virtual ICollection<TaskEntity> Tasks { get; set; } = new List<TaskEntity>();
+    public ICollection<TaskEntity> Tasks { get; set; } = new List<TaskEntity>();
 }

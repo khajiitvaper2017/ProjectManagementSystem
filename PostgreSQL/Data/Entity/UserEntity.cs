@@ -1,9 +1,7 @@
 ﻿namespace PostgreSQL.Data.Entity;
 
-public partial class UserEntity
+public sealed class UserEntity : AbstractEntity.Entity
 {
-    public string Id { get; set; }
-
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
@@ -12,7 +10,7 @@ public partial class UserEntity
 
     public string? Phone { get; set; }
 
-    public virtual ICollection<AssignmentEntity> Assignments { get; set; } = new List<AssignmentEntity>();
+    public ICollection<AssignmentEntity> Assignments { get; set; } = new List<AssignmentEntity>();
 
-    public virtual ICollection<CommentEntity> Comments { get; set; } = new List<CommentEntity>();
+    public ICollection<CommentEntity> Comments { get; set; } = new List<CommentEntity>();
 }

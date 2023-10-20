@@ -1,18 +1,16 @@
 ﻿namespace PostgreSQL.Data.Entity;
 
-public partial class CommentEntity
+public sealed class CommentEntity : AbstractEntity.Entity
 {
-    public string Id { get; set; }
-
     public string? Text { get; set; }
 
     public DateTime? Date { get; set; }
 
-    public string? TaskId { get; set; }
+    public Guid? TaskId { get; set; }
 
-    public string? UserId { get; set; }
+    public Guid? UserId { get; set; }
 
-    public virtual TaskEntity? Task { get; set; }
+    public TaskEntity? Task { get; set; }
 
-    public virtual UserEntity? User { get; set; }
+    public UserEntity? User { get; set; }
 }
