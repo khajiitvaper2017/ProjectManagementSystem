@@ -2,7 +2,6 @@ using API.RestModels.Validators;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using PostgreSQL.Data;
 using PostgreSQL.Extensions;
-using PostgreSQL.Extensions.CQRS;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +15,7 @@ builder.Services
                               "Database=pms-db;" +
                               "Integrated Security=true;" +
                               "Pooling=true")
-    .AddDataAccess()
-    .AddCqrs();
+    .AddDataAccess();
 
 // Add services to the container.
 
