@@ -1,4 +1,4 @@
-﻿namespace PostgreSQL.Dtos
+﻿namespace PostgreSQL.Data.Dtos
 {
     public sealed record UserInfoDto
     {
