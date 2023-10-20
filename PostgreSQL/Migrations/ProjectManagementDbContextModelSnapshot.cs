@@ -22,7 +22,7 @@ namespace PostgreSQL.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Assignment", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.AssignmentEntity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -45,7 +45,7 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Assignments");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Comment", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.CommentEntity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -71,7 +71,7 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Project", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.ProjectEntity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -95,7 +95,7 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Task", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.TaskEntity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -129,7 +129,7 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.User", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.UserEntity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text")
@@ -160,58 +160,58 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Assignment", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.AssignmentEntity", b =>
                 {
-                    b.HasOne("PostgreSQL.Data.Entity.Task", "Task")
+                    b.HasOne("PostgreSQL.Data.Entity.TaskEntity", "TaskEntity")
                         .WithMany("Assignments")
                         .HasForeignKey("TaskId");
 
-                    b.HasOne("PostgreSQL.Data.Entity.User", "User")
+                    b.HasOne("PostgreSQL.Data.Entity.UserEntity", "UserEntity")
                         .WithMany("Assignments")
                         .HasForeignKey("UserId");
 
-                    b.Navigation("Task");
+                    b.Navigation("TaskEntity");
 
-                    b.Navigation("User");
+                    b.Navigation("UserEntity");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Comment", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.CommentEntity", b =>
                 {
-                    b.HasOne("PostgreSQL.Data.Entity.Task", "Task")
+                    b.HasOne("PostgreSQL.Data.Entity.TaskEntity", "TaskEntity")
                         .WithMany("Comments")
                         .HasForeignKey("TaskId");
 
-                    b.HasOne("PostgreSQL.Data.Entity.User", "User")
+                    b.HasOne("PostgreSQL.Data.Entity.UserEntity", "UserEntity")
                         .WithMany("Comments")
                         .HasForeignKey("UserId");
 
-                    b.Navigation("Task");
+                    b.Navigation("TaskEntity");
 
-                    b.Navigation("User");
+                    b.Navigation("UserEntity");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Task", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.TaskEntity", b =>
                 {
-                    b.HasOne("PostgreSQL.Data.Entity.Project", "Project")
+                    b.HasOne("PostgreSQL.Data.Entity.ProjectEntity", "ProjectEntity")
                         .WithMany("Tasks")
                         .HasForeignKey("ProjectId");
 
-                    b.Navigation("Project");
+                    b.Navigation("ProjectEntity");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Project", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.ProjectEntity", b =>
                 {
                     b.Navigation("Tasks");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Task", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.TaskEntity", b =>
                 {
                     b.Navigation("Assignments");
 
                     b.Navigation("Comments");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.User", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.UserEntity", b =>
                 {
                     b.Navigation("Assignments");
 

@@ -1,6 +1,6 @@
 ﻿namespace PostgreSQL.Data.Entity;
 
-public partial class Assignment
+public partial class AssignmentEntity
 {
     public string Id { get; set; }
 
@@ -10,7 +10,7 @@ public partial class Assignment
 
     public string? UserId { get; set; }
 
-    public virtual Task? Task { get; set; }
+    public virtual TaskEntity? Task { get; set; }
 
-    public virtual User? User { get; set; }
+    public virtual UserEntity? User { get; set; }
 }

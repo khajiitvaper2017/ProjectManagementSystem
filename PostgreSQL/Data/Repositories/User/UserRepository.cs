@@ -11,12 +11,12 @@ public sealed class UserRepository : IUserRepository
         _context = context;
     }
 
-    public async Task Create(Entity.User user)
+    public async Task Create(Entity.UserEntity userEntity)
     {
-        await _context.Users.AddAsync(user);
+        await _context.Users.AddAsync(userEntity);
     }
 
-    public async Task<Entity.User?> FindSingle(string email)
+    public async Task<Entity.UserEntity?> FindSingle(string email)
     {
         return await _context.Users.SingleOrDefaultAsync(p => p.Email == email);
     }

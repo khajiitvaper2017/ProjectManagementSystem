@@ -1,6 +1,6 @@
 ﻿namespace PostgreSQL.Data.Entity;
 
-public partial class Comment
+public partial class CommentEntity
 {
     public string Id { get; set; }
 
@@ -12,7 +12,7 @@ public partial class Comment
 
     public string? UserId { get; set; }
 
-    public virtual Task? Task { get; set; }
+    public virtual TaskEntity? Task { get; set; }
 
-    public virtual User? User { get; set; }
+    public virtual UserEntity? User { get; set; }
 }

@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PostgreSQL.Data.Entity;
 
-using Task = PostgreSQL.Data.Entity.Task;
 namespace PostgreSQL.Data.Configuration;
 
-public sealed class TaskEntityConfiguration : IEntityTypeConfiguration<Task>
+public sealed class TaskEntityConfiguration : IEntityTypeConfiguration<TaskEntity>
 {
-    public void Configure(EntityTypeBuilder<Task> builder)
+    public void Configure(EntityTypeBuilder<TaskEntity> builder)
     {
         builder.HasKey(e => e.Id);
 

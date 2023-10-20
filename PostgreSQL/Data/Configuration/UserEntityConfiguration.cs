@@ -4,9 +4,9 @@ using PostgreSQL.Data.Entity;
 
 namespace PostgreSQL.Data.Configuration;
 
-public sealed class UserEntityConfiguration : IEntityTypeConfiguration<User>
+public sealed class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
 {
-    public void Configure(EntityTypeBuilder<User> builder)
+    public void Configure(EntityTypeBuilder<UserEntity> builder)
     {
         builder.HasKey(e => e.Id);
 

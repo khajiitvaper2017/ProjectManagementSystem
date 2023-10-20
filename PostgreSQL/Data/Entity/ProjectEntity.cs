@@ -1,6 +1,6 @@
 ﻿namespace PostgreSQL.Data.Entity;
 
-public partial class Project
+public partial class ProjectEntity
 {
     public string Id { get; set; }
 
@@ -12,5 +12,5 @@ public partial class Project
 
     public string? Description { get; set; }
 
-    public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
+    public virtual ICollection<TaskEntity> Tasks { get; set; } = new List<TaskEntity>();
 }

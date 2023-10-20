@@ -1,6 +1,6 @@
 ﻿namespace PostgreSQL.Data.Entity;
 
-public partial class User
+public partial class UserEntity
 {
     public string Id { get; set; }
 
@@ -12,7 +12,7 @@ public partial class User
 
     public string? Phone { get; set; }
 
-    public virtual ICollection<Assignment> Assignments { get; set; } = new List<Assignment>();
+    public virtual ICollection<AssignmentEntity> Assignments { get; set; } = new List<AssignmentEntity>();
 
-    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+    public virtual ICollection<CommentEntity> Comments { get; set; } = new List<CommentEntity>();
 }

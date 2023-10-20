@@ -4,9 +4,9 @@ using PostgreSQL.Data.Entity;
 
 namespace PostgreSQL.Data.Configuration;
 
-public sealed class CommentEntityConfiguration : IEntityTypeConfiguration<Comment>
+public sealed class CommentEntityConfiguration : IEntityTypeConfiguration<CommentEntity>
 {
-    public void Configure(EntityTypeBuilder<Comment> builder)
+    public void Configure(EntityTypeBuilder<CommentEntity> builder)
     {
         builder.HasKey(e => e.Id);
 
