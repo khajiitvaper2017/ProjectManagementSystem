@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.Commands.Assignment.Create;
+using PostgreSQL.CQRS.Assignment.Create;
 using PostgreSQL.Data.Dtos;
 
 namespace API.Controllers.Assignment;

@@ -4,6 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PostgreSQL.Data.UnitOfWork;
+using PostgreSQL.CQRS.Task.Create;
+using PostgreSQL.CQRS.Task.Remove;
+using PostgreSQL.CQRS.Comment.Create;
+using PostgreSQL.CQRS.Comment.Remove;
+using PostgreSQL.CQRS.Assignment.Create;
+using PostgreSQL.CQRS.Assignment.Remove;
+using PostgreSQL.CQRS.User.Create;
+using PostgreSQL.CQRS.User.Remove;
+using PostgreSQL.CQRS.Project.Create;
+using PostgreSQL.CQRS.Project.Remove;
 
 namespace PostgreSQL.Extensions
 {
@@ -11,36 +22,36 @@ namespace PostgreSQL.Extensions
     {
         public static IServiceCollection AddUserCommands(this IServiceCollection services)
         {
-            services.AddScoped<Commands.User.Create.ICreateUserCommand, Commands.User.Create.CreateUserCommand>();
-            services.AddScoped<Commands.User.Remove.IRemoveUserCommand, Commands.User.Remove.RemoveUserCommand>();
+            services.AddScoped<ICreateUserCommand, CreateUserCommand>();
+            services.AddScoped<IRemoveUserCommand, RemoveUserCommand>();
             return services;
         }
 
         public static IServiceCollection AddProjectCommands(this IServiceCollection services)
         {
-            services.AddScoped<Commands.Project.Create.ICreateProjectCommand, Commands.Project.Create.CreateProjectCommand>();
-            services.AddScoped<Commands.Project.Remove.IRemoveProjectCommand, Commands.Project.Remove.RemoveProjectCommand>();
+            services.AddScoped<ICreateProjectCommand, CreateProjectCommand>();
+            services.AddScoped<IRemoveProjectCommand, RemoveProjectCommand>();
             return services;
         }
 
         public static IServiceCollection AddTaskCommands(this IServiceCollection services)
         {
-            services.AddScoped<Commands.Task.Create.ICreateTaskCommand, Commands.Task.Create.CreateTaskCommand>();
-            services.AddScoped<Commands.Task.Remove.IRemoveTaskCommand, Commands.Task.Remove.RemoveTaskCommand>();
+            services.AddScoped<ICreateTaskCommand, CreateTaskCommand>();
+            services.AddScoped<IRemoveTaskCommand, RemoveTaskCommand>();
             return services;
         }
 
         public static IServiceCollection AddAssignmentCommands(this IServiceCollection services)
         {
-            services.AddScoped<Commands.Assignment.Create.ICreateAssignmentCommand, Commands.Assignment.Create.CreateAssignmentCommand>();
-            services.AddScoped<Commands.Assignment.Remove.IRemoveAssignmentCommand, Commands.Assignment.Remove.RemoveAssignmentCommand>();
+            services.AddScoped<ICreateAssignmentCommand, CreateAssignmentCommand>();
+            services.AddScoped<IRemoveAssignmentCommand, RemoveAssignmentCommand>();
             return services;
         }
 
         public static IServiceCollection AddCommentCommands(this IServiceCollection services)
         {
-            services.AddScoped<Commands.Comment.Create.ICreateCommentCommand, Commands.Comment.Create.CreateCommentCommand>();
-            services.AddScoped<Commands.Comment.Remove.IRemoveCommentCommand, Commands.Comment.Remove.RemoveCommentCommand>();
+            services.AddScoped<ICreateCommentCommand, CreateCommentCommand>();
+            services.AddScoped<IRemoveCommentCommand, RemoveCommentCommand>();
             return services;
         }
 
@@ -51,6 +62,12 @@ namespace PostgreSQL.Extensions
             services.AddTaskCommands();
             services.AddAssignmentCommands();
             services.AddCommentCommands();
+            return services;
+        }
+
+        public static IServiceCollection AddUnitOfWork(this IServiceCollection services)
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }

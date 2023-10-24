@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.Commands.Comment.Remove;
+using PostgreSQL.CQRS.Comment.Remove;
 using PostgreSQL.Data.Dtos;
 
 namespace API.Controllers.Comment;

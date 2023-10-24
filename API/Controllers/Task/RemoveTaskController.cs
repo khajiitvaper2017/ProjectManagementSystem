@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.Commands.Task.Remove;
+using PostgreSQL.CQRS.Task.Remove;
 
 namespace API.Controllers.Task;
 

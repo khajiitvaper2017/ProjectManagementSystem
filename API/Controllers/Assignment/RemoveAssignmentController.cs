@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.Commands.Assignment.Remove;
+using PostgreSQL.CQRS.Assignment.Remove;
 
 namespace API.Controllers.Assignment;
 
