@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.CQRS.Project.Remove;
+using PostgreSQL.Commands.Project.Remove;
 using PostgreSQL.Data.Dtos;
 
 namespace API.Controllers.Project;

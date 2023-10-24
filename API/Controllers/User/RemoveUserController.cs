@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.CQRS.User.Remove;
+using PostgreSQL.Commands.User.Remove;
 using PostgreSQL.Data.Dtos;
 
 namespace API.Controllers.User;

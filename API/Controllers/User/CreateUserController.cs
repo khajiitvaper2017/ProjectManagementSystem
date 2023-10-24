@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.CQRS.User.Create;
+using PostgreSQL.Commands.User.Create;
 using PostgreSQL.Data.Dtos;
 
 namespace API.Controllers.User;

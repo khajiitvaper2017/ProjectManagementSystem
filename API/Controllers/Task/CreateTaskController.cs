@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PostgreSQL.Commands.Task.Create;
 using PostgreSQL.Commands.User.Create;
-using PostgreSQL.CQRS.Task.Create;
 using PostgreSQL.Data.Dtos;
 
 namespace API.Controllers.Task;

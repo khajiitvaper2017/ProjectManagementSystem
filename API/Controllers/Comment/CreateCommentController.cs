@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.CQRS.Comment.Create;
+using PostgreSQL.Commands.Comment.Create;
 using PostgreSQL.Data.Dtos;
 
 namespace API.Controllers.Comment;
