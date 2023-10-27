@@ -12,8 +12,8 @@ using PostgreSQL.Data;
 namespace PostgreSQL.Migrations
 {
     [DbContext(typeof(ProjectManagementDbContext))]
-    [Migration("20231015211317_idchange")]
-    partial class idchange
+    [Migration("20231024181257_1")]
+    partial class _1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,19 +25,20 @@ namespace PostgreSQL.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Assignment", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.AssignmentEntity", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Date")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("TaskId")
-                        .HasColumnType("text");
+                    b.Property<Guid?>("TaskId")
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -48,22 +49,23 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Assignments");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Comment", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.CommentEntity", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Date")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("TaskId")
-                        .HasColumnType("text");
+                    b.Property<Guid?>("TaskId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Text")
                         .HasColumnType("text");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -74,10 +76,11 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Project", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.ProjectEntity", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -98,10 +101,11 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Task", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.TaskEntity", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -114,8 +118,8 @@ namespace PostgreSQL.Migrations
                         .IsUnicode(false)
                         .HasColumnType("character varying(255)");
 
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("text");
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("timestamp with time zone");
@@ -132,10 +136,10 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.User", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.UserEntity", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text")
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid")
                         .HasColumnName("UserID");
 
                     b.Property<string>("Email")
@@ -163,13 +167,13 @@ namespace PostgreSQL.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Assignment", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.AssignmentEntity", b =>
                 {
-                    b.HasOne("PostgreSQL.Data.Entity.Task", "Task")
+                    b.HasOne("PostgreSQL.Data.Entity.TaskEntity", "Task")
                         .WithMany("Assignments")
                         .HasForeignKey("TaskId");
 
-                    b.HasOne("PostgreSQL.Data.Entity.User", "User")
+                    b.HasOne("PostgreSQL.Data.Entity.UserEntity", "User")
                         .WithMany("Assignments")
                         .HasForeignKey("UserId");
 
@@ -178,13 +182,13 @@ namespace PostgreSQL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Comment", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.CommentEntity", b =>
                 {
-                    b.HasOne("PostgreSQL.Data.Entity.Task", "Task")
+                    b.HasOne("PostgreSQL.Data.Entity.TaskEntity", "Task")
                         .WithMany("Comments")
                         .HasForeignKey("TaskId");
 
-                    b.HasOne("PostgreSQL.Data.Entity.User", "User")
+                    b.HasOne("PostgreSQL.Data.Entity.UserEntity", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId");
 
@@ -193,28 +197,28 @@ namespace PostgreSQL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Task", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.TaskEntity", b =>
                 {
-                    b.HasOne("PostgreSQL.Data.Entity.Project", "Project")
+                    b.HasOne("PostgreSQL.Data.Entity.ProjectEntity", "Project")
                         .WithMany("Tasks")
                         .HasForeignKey("ProjectId");
 
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Project", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.ProjectEntity", b =>
                 {
                     b.Navigation("Tasks");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.Task", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.TaskEntity", b =>
                 {
                     b.Navigation("Assignments");
 
                     b.Navigation("Comments");
                 });
 
-            modelBuilder.Entity("PostgreSQL.Data.Entity.User", b =>
+            modelBuilder.Entity("PostgreSQL.Data.Entity.UserEntity", b =>
                 {
                     b.Navigation("Assignments");
 
