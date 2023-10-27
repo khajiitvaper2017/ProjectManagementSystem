@@ -2,7 +2,6 @@ namespace PostgreSQL.Data.Dtos;
 
 public sealed record ProjectInfoDto
 {
-    public Guid Id { get; set; }
 
     public string? Name { get; set; }
 

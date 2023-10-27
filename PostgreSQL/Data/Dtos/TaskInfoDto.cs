@@ -2,8 +2,6 @@ namespace PostgreSQL.Data.Dtos;
 
 public sealed record TaskInfoDto
 {
-    public Guid Id { get; set; }
-
     public string? Name { get; set; }
 
     public string? Description { get; set; }
