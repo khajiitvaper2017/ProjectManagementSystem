@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using PostgreSQL.Data.Repositories;
 using PostgreSQL.Data.Repositories.Factory;
@@ -16,6 +17,12 @@ public sealed class UnitOfWork : IUnitOfWork
         _context = context;
         _repositoryFactory = repositoryFactory;
         _repositories = new ConcurrentDictionary<Type, object>();
+
+        _context.Projects.Load();
+        _context.Tasks.Load();
+        _context.Assignments.Load();
+        _context.Users.Load();
+        _context.Comments.Load();
     }
     
     public async Task Commit()

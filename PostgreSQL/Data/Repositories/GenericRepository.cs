@@ -26,12 +26,16 @@ public class GenericRepository<TEntity> : IRepository where TEntity : class
     public virtual void Insert(TEntity entity)
     {
         _dbSet.Add(entity);
+
+        Update(entity);
     }
 
     public virtual void Delete(Guid id)
     {
-        TEntity? entityToDelete = _dbSet.Find(id);
+        var entityToDelete = _dbSet.Find(id);
         Delete(entityToDelete);
+
+        Update(entityToDelete);
     }
 
     public virtual void Delete(TEntity? entityToDelete)
@@ -45,6 +49,8 @@ public class GenericRepository<TEntity> : IRepository where TEntity : class
             _dbSet.Attach(entityToDelete);
         }
         _dbSet.Remove(entityToDelete);
+
+        Update(entityToDelete);
     }
 
     public virtual void Update(TEntity? entityToUpdate)

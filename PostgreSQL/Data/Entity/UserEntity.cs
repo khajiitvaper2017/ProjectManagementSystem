@@ -13,4 +13,9 @@ public sealed class UserEntity : AbstractEntity.Entity
     public ICollection<AssignmentEntity> Assignments { get; set; } = new List<AssignmentEntity>();
 
     public ICollection<CommentEntity> Comments { get; set; } = new List<CommentEntity>();
+
+    public string GetFullName()
+    {
+        return $"{FirstName} {LastName}";
+    }
 }
