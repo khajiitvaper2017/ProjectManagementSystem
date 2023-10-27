@@ -6,10 +6,11 @@ namespace PostgreSQL.Extensions
     {
         public static IServiceCollection AddUserCommands(this IServiceCollection services)
         {
-            services.AddScoped<Commands.User.Create.ICreateUserCommand, Commands.User.Create.CreateUserCommand>();
+            //services.AddScoped<Commands.User.Create.ICreateUserCommand, Commands.User.Create.CreateUserCommand>();
             services.AddScoped<Commands.User.Remove.IRemoveUserCommand, Commands.User.Remove.RemoveUserCommand>();
 
             services.AddScoped<CQRS.User.Queries.GetById.IUserGetByIdQueryHandler, CQRS.User.Queries.GetById.UserGetByIdQueryHandler>();
+            services.AddScoped<CQRS.User.Commands.Create.IUserCreateCommandHandler, CQRS.User.Commands.Create.UserCreateCommandHandler>();
             return services;
         }
 
