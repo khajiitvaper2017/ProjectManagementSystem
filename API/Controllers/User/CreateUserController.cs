@@ -2,7 +2,7 @@
 using PostgreSQL.Commands.User.Create;
 using PostgreSQL.Data.Dtos;
 
-namespace API.Controllers.User;
+namespace PmsAPI.Controllers.User;
 
 [ApiController]
 [Route("users")]

@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PostgreSQL.Commands.Task.Create;
-using PostgreSQL.Commands.User.Create;
 using PostgreSQL.Data.Dtos;
 
-namespace API.Controllers.Task;
+namespace PmsAPI.Controllers.Task;
 
 [ApiController]
 [Route("tasks")]

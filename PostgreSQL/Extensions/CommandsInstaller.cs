@@ -20,6 +20,9 @@ namespace PostgreSQL.Extensions
         {
             services.AddScoped<Commands.Project.Create.ICreateProjectCommand, Commands.Project.Create.CreateProjectCommand>();
             services.AddScoped<Commands.Project.Remove.IRemoveProjectCommand, Commands.Project.Remove.RemoveProjectCommand>();
+            
+            services.AddScoped<CQRS.Project.Queries.GetById.IProjectGetByIdQueryHandler, CQRS.Project.Queries.GetById.ProjectGetByIdQueryHandler>();
+            services.AddScoped<CQRS.Project.Queries.GetAll.IProjectGetAllQueryHandler, CQRS.Project.Queries.GetAll.ProjectGetAllQueryHandler>();
             return services;
         }
 

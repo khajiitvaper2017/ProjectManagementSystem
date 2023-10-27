@@ -2,7 +2,7 @@
 using PostgreSQL.Commands.Comment.Create;
 using PostgreSQL.Data.Dtos;
 
-namespace API.Controllers.Comment;
+namespace PmsAPI.Controllers.Comment;
 
 [ApiController]
 [Route("comments")]

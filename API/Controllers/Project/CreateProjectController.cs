@@ -2,7 +2,7 @@
 using PostgreSQL.Commands.Project.Create;
 using PostgreSQL.Data.Dtos;
 
-namespace API.Controllers.Project;
+namespace PmsAPI.Controllers.Project;
 
 [ApiController]
 [Route("projects")]

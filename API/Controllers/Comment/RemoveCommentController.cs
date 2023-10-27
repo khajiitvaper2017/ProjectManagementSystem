@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PostgreSQL.Commands.Comment.Remove;
-using PostgreSQL.Data.Dtos;
 
-namespace API.Controllers.Comment;
+namespace PmsAPI.Controllers.Comment;
 
 [ApiController]
 [Route("comments")]

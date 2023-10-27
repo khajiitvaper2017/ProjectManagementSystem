@@ -10,9 +10,6 @@ public static class DataAccessInstaller
     public static IServiceCollection AddDataAccess(this IServiceCollection services)
     {
         services
-            .AddScoped<IUserRepository, UserRepository>();
-        
-        services
             .AddSingleton<IRepositoryFactory, RepositoryFactory>()
             .AddScoped<IUnitOfWork, UnitOfWork>();
             
