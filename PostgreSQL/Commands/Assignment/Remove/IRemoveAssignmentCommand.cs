@@ -1,8 +1,7 @@
 ﻿using PostgreSQL.Commands.Core;
 
-namespace PostgreSQL.Commands.Assignment.Remove
+namespace PostgreSQL.Commands.Assignment.Remove;
+
+public interface IRemoveAssignmentCommand : INoResponseAsyncCommand<Guid>
 {
-    public interface IRemoveAssignmentCommand : INoResponseAsyncCommand<Guid>
-    {
-    }
 }

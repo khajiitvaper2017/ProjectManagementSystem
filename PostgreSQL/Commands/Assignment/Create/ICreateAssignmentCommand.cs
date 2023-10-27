@@ -1,9 +1,8 @@
 ﻿using PostgreSQL.Commands.Core;
 using PostgreSQL.Data.Dtos;
 
-namespace PostgreSQL.Commands.Assignment.Create
+namespace PostgreSQL.Commands.Assignment.Create;
+
+public interface ICreateAssignmentCommand : INoResponseAsyncCommand<AssignmentInfoDto>
 {
-    public interface ICreateAssignmentCommand : INoResponseAsyncCommand<AssignmentInfoDto>
-    {
-    }
 }

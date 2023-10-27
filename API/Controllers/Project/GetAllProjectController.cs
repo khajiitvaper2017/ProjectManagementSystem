@@ -2,26 +2,25 @@
 using PostgreSQL.CQRS.Project.Queries.GetAll;
 using PostgreSQL.Data.Entity;
 
-namespace PmsAPI.Controllers.Project
+namespace PmsAPI.Controllers.Project;
+
+[ApiController]
+[Route("projects")]
+[ApiExplorerSettings(GroupName = "projects")]
+public class GetAllProjectController : ControllerBase
 {
-    [ApiController]
-    [Route("projects")]
-    [ApiExplorerSettings(GroupName = "projects")]
-    public class GetAllProjectController : ControllerBase
+    private readonly IProjectGetAllQueryHandler _queryHandler;
+
+    public GetAllProjectController(IProjectGetAllQueryHandler queryHandler)
     {
-        private readonly IProjectGetAllQueryHandler _queryHandler;
+        _queryHandler = queryHandler;
+    }
 
-        public GetAllProjectController(IProjectGetAllQueryHandler queryHandler)
-        {
-            _queryHandler = queryHandler;
-        }
+    [HttpGet]
+    public async Task<IEnumerable<ProjectEntity>> GetAll()
+    {
+        var projects = await _queryHandler.Handle(new ProjectGetAllQuery());
 
-        [HttpGet]
-        public async Task<IEnumerable<ProjectEntity>> GetAll()
-        {
-            var projects = await _queryHandler.Handle(new ProjectGetAllQuery());
-
-            return projects;
-        }
+        return projects;
     }
 }

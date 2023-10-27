@@ -1,39 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PostgreSQL.CQRS.User.Queries.GetById;
 
-namespace PmsAPI.Controllers.User
+namespace PmsAPI.Controllers.User;
+
+[ApiController]
+[Route("users")]
+[ApiExplorerSettings(GroupName = "users")]
+public class GetByIdUserController : ControllerBase
 {
-    [ApiController]
-    [Route("users")]
-    [ApiExplorerSettings(GroupName = "users")]
-    public class GetByIdUserController : ControllerBase
+    private readonly IUserGetByIdQueryHandler _queryHandler;
+
+    public GetByIdUserController(IUserGetByIdQueryHandler queryHandler)
     {
-        private readonly IUserGetByIdQueryHandler _queryHandler;
+        _queryHandler = queryHandler;
+    }
 
-        public GetByIdUserController(IUserGetByIdQueryHandler queryHandler)
+    [HttpGet("{id}")]
+
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        try
         {
-            _queryHandler = queryHandler;
+            var project = await _queryHandler.Handle(new UserGetByIdQuery(id));
+
+            if (project is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(project);
         }
-
-        [HttpGet("{id}")]
-
-        public async Task<IActionResult> GetById(Guid id)
+        catch (Exception ex)
         {
-            try
-            {
-                var project = await _queryHandler.Handle(new UserGetByIdQuery(id));
-
-                if (project is null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(project);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return BadRequest(ex.Message);
         }
     }
 }

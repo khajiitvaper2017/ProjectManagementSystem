@@ -2,26 +2,25 @@
 using PostgreSQL.CQRS.Core.Query;
 using PostgreSQL.Data.Dtos;
 
-namespace PostgreSQL.CQRS.User.Commands.Create
+namespace PostgreSQL.CQRS.User.Commands.Create;
+
+public sealed record UserCreateCommand : ICommand
 {
-    public sealed record UserCreateCommand : ICommand
+    public UserInfoDto UserInfo { get; init; }
+
+    public UserCreateCommand(string email, string phone, string firstName, string lastName)
     {
-        public UserInfoDto UserInfo { get; init; }
-
-        public UserCreateCommand(string email, string phone, string firstName, string lastName)
+        UserInfo = new UserInfoDto
         {
-            UserInfo = new UserInfoDto
-            {
-                Email = email,
-                Phone = phone,
-                FirstName = firstName,
-                LastName = lastName
-            };
-        }
+            Email = email,
+            Phone = phone,
+            FirstName = firstName,
+            LastName = lastName
+        };
+    }
 
-        public UserCreateCommand(UserInfoDto userInfo)
-        {
-            UserInfo = userInfo;
-        }
+    public UserCreateCommand(UserInfoDto userInfo)
+    {
+        UserInfo = userInfo;
     }
 }

@@ -1,8 +1,7 @@
 ﻿using PostgreSQL.Commands.Core;
 
-namespace PostgreSQL.Commands.User.Remove
+namespace PostgreSQL.Commands.User.Remove;
+
+public interface IRemoveUserCommand : INoResponseAsyncCommand<Guid>
 {
-    public interface IRemoveUserCommand : INoResponseAsyncCommand<Guid>
-    {
-    }
 }

@@ -2,30 +2,29 @@
 using PostgreSQL.Data.Repositories;
 using PostgreSQL.Data.UnitOfWork;
 
-namespace PostgreSQL.CQRS.Project.Queries.GetAll
+namespace PostgreSQL.CQRS.Project.Queries.GetAll;
+
+public sealed class ProjectGetAllQueryHandler : IProjectGetAllQueryHandler
 {
-    public sealed class ProjectGetAllQueryHandler : IProjectGetAllQueryHandler
+    private readonly IUnitOfWork _unitOfWork;
+
+    public ProjectGetAllQueryHandler(IUnitOfWork unitOfWork)
     {
-        private readonly IUnitOfWork _unitOfWork;
+        _unitOfWork = unitOfWork;
+    }
 
-        public ProjectGetAllQueryHandler(IUnitOfWork unitOfWork)
+
+    public Task<IEnumerable<ProjectEntity>?> Handle(ProjectGetAllQuery query = null)
+    {
+        var projectRepository = _unitOfWork.Repository<ProjectEntity>() as GenericRepository<ProjectEntity>;
+
+        if (projectRepository is null)
         {
-            _unitOfWork = unitOfWork;
+            throw new NullReferenceException(nameof(projectRepository));
         }
 
+        var projects = projectRepository.GetAll();
 
-        public Task<IEnumerable<ProjectEntity>?> Handle(ProjectGetAllQuery query = null)
-        {
-            var projectRepository = _unitOfWork.Repository<ProjectEntity>() as GenericRepository<ProjectEntity>;
-
-            if (projectRepository is null)
-            {
-                throw new NullReferenceException(nameof(projectRepository));
-            }
-
-            var projects = projectRepository.GetAll();
-
-            return Task.FromResult(projects);
-        }
+        return Task.FromResult(projects);
     }
 }
