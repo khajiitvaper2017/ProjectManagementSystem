@@ -19,5 +19,10 @@ public sealed class ProjectEntityConfiguration : IEntityTypeConfiguration<Projec
             .IsUnicode(false);
 
         builder.Property(e => e.StartDate);
+
+        builder.HasMany(e => e.Tasks)
+            .WithOne(e => e.Project)
+            .HasForeignKey(e => e.ProjectId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

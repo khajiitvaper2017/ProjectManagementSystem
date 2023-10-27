@@ -29,5 +29,15 @@ public sealed class UserEntityConfiguration : IEntityTypeConfiguration<UserEntit
         builder.Property(e => e.Phone)
             .HasMaxLength(20)
             .IsUnicode(false);
+
+        builder.HasMany(e => e.Assignments)
+            .WithOne(e => e.User)
+            .HasForeignKey(e => e.UserId)
+            .OnDelete(DeleteBehavior.ClientSetNull);
+
+        builder.HasMany(e => e.Comments)
+            .WithOne(e => e.User)
+            .HasForeignKey(e => e.UserId)
+            .OnDelete(DeleteBehavior.ClientSetNull);
     }
 }
