@@ -1,5 +1,4 @@
 ﻿using PostgreSQL.CQRS.Core.Command;
-using PostgreSQL.CQRS.Core.Query;
 using PostgreSQL.Data.Dtos;
 
 namespace PostgreSQL.CQRS.User.Commands.Create;

@@ -15,7 +15,7 @@ public sealed class CreateProjectCommand : ICreateProjectCommand
     {
         ProjectEntity project = new ProjectEntity
         {
-            Id = dto.Id,
+            Id = Guid.NewGuid(),
             Name = dto.Name,
             Description = dto.Description,
             StartDate = dto.StartDate,

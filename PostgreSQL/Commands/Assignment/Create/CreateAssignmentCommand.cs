@@ -15,7 +15,7 @@ public sealed class CreateAssignmentCommand : ICreateAssignmentCommand
     {
         AssignmentEntity assignment = new AssignmentEntity
         {
-            Id = dto.Id,
+            Id = Guid.NewGuid(),
             UserId = dto.UserId,
             TaskId = dto.TaskId,
             Date = dto.Date,
