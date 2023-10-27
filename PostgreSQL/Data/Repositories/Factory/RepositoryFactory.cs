@@ -1,6 +1,3 @@
-using PostgreSQL.Data.Repositories.User;
-using PostgreSQL.Exceptions;
-
 namespace PostgreSQL.Data.Repositories.Factory;
 
 public sealed class RepositoryFactory : IRepositoryFactory

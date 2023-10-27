@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using PostgreSQL.Data.Repositories.Factory;
-using PostgreSQL.Data.Repositories.User;
 using PostgreSQL.Data.UnitOfWork;
 
 namespace PostgreSQL.Extensions;

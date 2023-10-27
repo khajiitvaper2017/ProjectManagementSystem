@@ -1,9 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PostgreSQL.Extensions
 {
@@ -13,6 +8,8 @@ namespace PostgreSQL.Extensions
         {
             services.AddScoped<Commands.User.Create.ICreateUserCommand, Commands.User.Create.CreateUserCommand>();
             services.AddScoped<Commands.User.Remove.IRemoveUserCommand, Commands.User.Remove.RemoveUserCommand>();
+
+            services.AddScoped<CQRS.User.Queries.GetById.IUserGetByIdQueryHandler, CQRS.User.Queries.GetById.UserGetByIdQueryHandler>();
             return services;
         }
 

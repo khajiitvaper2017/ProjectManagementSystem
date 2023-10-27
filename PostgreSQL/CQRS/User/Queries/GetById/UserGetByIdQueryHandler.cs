@@ -2,20 +2,20 @@
 using PostgreSQL.Data.Repositories;
 using PostgreSQL.Data.UnitOfWork;
 
-namespace PostgreSQL.CQRS.Project.Queries.GetById
+namespace PostgreSQL.CQRS.User.Queries.GetById
 {
-    public sealed class ProjectGetByIdQueryHandler : IProjectGetByIdQueryHandler
+    public sealed class UserGetByIdQueryHandler : IUserGetByIdQueryHandler
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProjectGetByIdQueryHandler(IUnitOfWork unitOfWork)
+        public UserGetByIdQueryHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public Task<ProjectEntity?> Handle(ProjectGetByIdQuery query)
+        public Task<UserEntity?> Handle(UserGetByIdQuery query)
         {
-            var projectRepository = _unitOfWork.Repository<ProjectEntity>() as GenericRepository<ProjectEntity>;
+            var projectRepository = _unitOfWork.Repository<UserEntity>() as GenericRepository<UserEntity>;
 
             if (projectRepository is null)
             {

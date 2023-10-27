@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Controllers;
-using PostgreSQL.Data;
 using PostgreSQL.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

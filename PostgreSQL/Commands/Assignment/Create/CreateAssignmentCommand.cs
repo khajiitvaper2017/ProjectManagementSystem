@@ -1,8 +1,7 @@
-﻿using PostgreSQL.Commands.User.Create;
-using PostgreSQL.Data;
+﻿using PostgreSQL.Data;
 using PostgreSQL.Data.Dtos;
 using PostgreSQL.Data.Entity;
-using System.Threading.Tasks;
+
 namespace PostgreSQL.Commands.Assignment.Create
 {
     public sealed class CreateAssignmentCommand : ICreateAssignmentCommand

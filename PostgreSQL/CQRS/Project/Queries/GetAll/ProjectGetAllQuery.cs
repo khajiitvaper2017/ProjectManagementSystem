@@ -1,5 +1,4 @@
-﻿using PostgreSQL.CQRS.Project.Queries.GetById;
-using PostgreSQL.Data.Entity;
+﻿using PostgreSQL.Data.Entity;
 using PostgreSQL.Data.Repositories;
 using PostgreSQL.Data.UnitOfWork;
 

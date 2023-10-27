@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQRS\User\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 

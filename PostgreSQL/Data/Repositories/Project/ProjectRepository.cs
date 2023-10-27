@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using PostgreSQL.Data.Repositories.User;
 
 namespace PostgreSQL.Data.Repositories.Project;
 
