@@ -9,7 +9,7 @@ public sealed class ProjectManagementDbContext : DbContext
     public ProjectManagementDbContext(DbContextOptions<ProjectManagementDbContext> options)
         : base(options)
     {
-        Database.EnsureCreated();
+
     }
 
     public DbSet<AssignmentEntity> Assignments { get; set; }

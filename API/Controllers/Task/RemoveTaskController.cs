@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PostgreSQL.Commands.Task.Remove;
 
-namespace API.Controllers.Task;
+namespace PmsAPI.Controllers.Task;
 
 [ApiController]
 [Route("tasks")]

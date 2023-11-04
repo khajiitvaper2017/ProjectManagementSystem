@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.Commands.User.Create;
+using PostgreSQL.CQRS.User.Commands.Create;
 using PostgreSQL.Data.Dtos;
 
-namespace API.Controllers.User;
+namespace PmsAPI.Controllers.User;
 
 [ApiController]
 [Route("users")]
 [ApiExplorerSettings(GroupName = "users")]
 public class CreateUserController : ControllerBase
 {
-    private readonly ICreateUserCommand _command;
+    private readonly IUserCreateCommandHandler _command;
 
-    public CreateUserController(ICreateUserCommand command)
+    public CreateUserController(IUserCreateCommandHandler command)
     {
         _command = command;
     }
@@ -22,7 +22,7 @@ public class CreateUserController : ControllerBase
     {
         try
         {
-            await _command.ExecuteAsync(dto);
+            await _command.Handle(new UserCreateCommand(dto));
             return Ok();
         }
         catch (Exception ex)

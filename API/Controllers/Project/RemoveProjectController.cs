@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PostgreSQL.Commands.Project.Remove;
-using PostgreSQL.Data.Dtos;
 
-namespace API.Controllers.Project;
+namespace PmsAPI.Controllers.Project;
 
 [ApiController]
 [Route("projects")]

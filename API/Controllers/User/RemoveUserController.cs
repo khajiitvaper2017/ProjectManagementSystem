@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PostgreSQL.Commands.User.Remove;
-using PostgreSQL.Data.Dtos;
 
-namespace API.Controllers.User;
+namespace PmsAPI.Controllers.User;
 
 [ApiController]
 [Route("users")]

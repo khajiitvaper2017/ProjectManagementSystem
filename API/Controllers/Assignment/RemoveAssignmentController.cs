@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PostgreSQL.Commands.Assignment.Remove;
 
-namespace API.Controllers.Assignment;
+namespace PmsAPI.Controllers.Assignment;
 
 [ApiController]
 [Route("assignments")]

@@ -1,9 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PostgreSQL.Extensions
 {
@@ -11,8 +6,11 @@ namespace PostgreSQL.Extensions
     {
         public static IServiceCollection AddUserCommands(this IServiceCollection services)
         {
-            services.AddScoped<Commands.User.Create.ICreateUserCommand, Commands.User.Create.CreateUserCommand>();
+            //services.AddScoped<Commands.User.Create.ICreateUserCommand, Commands.User.Create.CreateUserCommand>();
             services.AddScoped<Commands.User.Remove.IRemoveUserCommand, Commands.User.Remove.RemoveUserCommand>();
+
+            services.AddScoped<CQRS.User.Queries.GetById.IUserGetByIdQueryHandler, CQRS.User.Queries.GetById.UserGetByIdQueryHandler>();
+            services.AddScoped<CQRS.User.Commands.Create.IUserCreateCommandHandler, CQRS.User.Commands.Create.UserCreateCommandHandler>();
             return services;
         }
 
@@ -20,6 +18,9 @@ namespace PostgreSQL.Extensions
         {
             services.AddScoped<Commands.Project.Create.ICreateProjectCommand, Commands.Project.Create.CreateProjectCommand>();
             services.AddScoped<Commands.Project.Remove.IRemoveProjectCommand, Commands.Project.Remove.RemoveProjectCommand>();
+            
+            services.AddScoped<CQRS.Project.Queries.GetById.IProjectGetByIdQueryHandler, CQRS.Project.Queries.GetById.ProjectGetByIdQueryHandler>();
+            services.AddScoped<CQRS.Project.Queries.GetAll.IProjectGetAllQueryHandler, CQRS.Project.Queries.GetAll.ProjectGetAllQueryHandler>();
             return services;
         }
 

@@ -2,7 +2,7 @@
 using PostgreSQL.Commands.Assignment.Create;
 using PostgreSQL.Data.Dtos;
 
-namespace API.Controllers.Assignment;
+namespace PmsAPI.Controllers.Assignment;
 
 [ApiController]
 [Route("assignments")]
