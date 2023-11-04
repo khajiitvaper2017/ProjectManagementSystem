@@ -15,7 +15,7 @@ public sealed class CreateUserCommand : ICreateUserCommand
     {
         UserEntity user = new UserEntity
         {
-            Id = dto.Id,
+            Id = Guid.NewGuid(),
             Email = dto.Email,
             Phone = dto.Phone,
             FirstName = dto.FirstName,

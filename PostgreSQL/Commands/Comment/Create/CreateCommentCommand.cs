@@ -15,7 +15,7 @@ public sealed class CreateCommentCommand : ICreateCommentCommand
     {
         CommentEntity comment = new CommentEntity
         {
-            Id = dto.Id,
+            Id = Guid.NewGuid(),
             UserId = dto.UserId,
             TaskId = dto.TaskId,
             Date = dto.Date,

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using PostgreSQL.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +19,12 @@ builder.Services
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
+    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

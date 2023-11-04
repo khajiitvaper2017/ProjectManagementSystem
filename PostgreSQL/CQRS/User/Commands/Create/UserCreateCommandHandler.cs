@@ -17,7 +17,7 @@ public sealed class UserCreateCommandHandler : IUserCreateCommandHandler
     {
         UserEntity user = new UserEntity
         {
-            Id = new Guid(),
+            Id = Guid.NewGuid(),
             Email = command.UserInfo.Email,
             Phone = command.UserInfo.Phone,
             FirstName = command.UserInfo.FirstName,

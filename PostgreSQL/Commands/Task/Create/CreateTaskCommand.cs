@@ -16,7 +16,7 @@ public sealed class CreateTaskCommand : ICreateTaskCommand
     {
         TaskEntity task = new TaskEntity
         {
-            Id = dto.Id,
+            Id = Guid.NewGuid(),
             Name = dto.Name,
             Description = dto.Description,
             StartDate = dto.StartDate,
