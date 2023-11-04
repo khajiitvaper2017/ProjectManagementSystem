@@ -2,30 +2,29 @@
 using PostgreSQL.Data.Repositories;
 using PostgreSQL.Data.UnitOfWork;
 
-namespace PostgreSQL.CQRS.User.Commands.Create
+namespace PostgreSQL.CQRS.User.Commands.Create;
+
+public sealed class UserCreateCommandHandler : IUserCreateCommandHandler
 {
-    public sealed class UserCreateCommandHandler : IUserCreateCommandHandler
+    private readonly IUnitOfWork _unitOfWork;
+
+    public UserCreateCommandHandler(IUnitOfWork unitOfWork)
     {
-        private readonly IUnitOfWork _unitOfWork;
+        _unitOfWork = unitOfWork;
+    }
 
-        public UserCreateCommandHandler(IUnitOfWork unitOfWork)
+    public async Task Handle(UserCreateCommand command)
+    {
+        UserEntity user = new UserEntity
         {
-            _unitOfWork = unitOfWork;
-        }
+            Id = new Guid(),
+            Email = command.UserInfo.Email,
+            Phone = command.UserInfo.Phone,
+            FirstName = command.UserInfo.FirstName,
+            LastName = command.UserInfo.LastName,
+        };
 
-        public async Task Handle(UserCreateCommand command)
-        {
-            UserEntity user = new UserEntity
-            {
-                Id = new Guid(),
-                Email = command.UserInfo.Email,
-                Phone = command.UserInfo.Phone,
-                FirstName = command.UserInfo.FirstName,
-                LastName = command.UserInfo.LastName,
-            };
-
-            (_unitOfWork.Repository<UserEntity>() as GenericRepository<UserEntity>)?.Insert(user);
-            await _unitOfWork.Commit();
-        }
+        (_unitOfWork.Repository<UserEntity>() as GenericRepository<UserEntity>)?.Insert(user);
+        await _unitOfWork.Commit();
     }
 }

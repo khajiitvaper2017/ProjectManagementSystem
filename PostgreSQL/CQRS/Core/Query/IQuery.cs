@@ -1,8 +1,6 @@
-namespace PostgreSQL.CQRS.Core.Query
+namespace PostgreSQL.CQRS.Core.Query;
+
+public interface IQuery
 {
-    public interface IQuery
-    {
 
-    }
 }
-

@@ -1,7 +1,6 @@
-﻿namespace PostgreSQL.Data.Entity.AbstractEntity
+﻿namespace PostgreSQL.Data.Entity.AbstractEntity;
+
+internal interface IEntity
 {
-    internal interface IEntity
-    {
-        public Guid Id { get; set; }
-    }
+    public Guid Id { get; set; }
 }

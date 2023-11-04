@@ -1,9 +1,7 @@
 
-namespace PostgreSQL.CQRS.Core.Command
+namespace PostgreSQL.CQRS.Core.Command;
+
+public interface ICommand
 {
-    public interface ICommand
-    {
 
-    }
 }
-
