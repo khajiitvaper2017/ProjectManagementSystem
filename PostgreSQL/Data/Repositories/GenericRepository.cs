@@ -55,11 +55,6 @@ public class GenericRepository<TEntity> : IRepository where TEntity : class
 
     public virtual void Update(TEntity? entityToUpdate)
     {
-        if (entityToUpdate is null)
-        {
-            return;
-        }
-        _dbSet.Attach(entityToUpdate);
-        _context.Entry(entityToUpdate).State = EntityState.Modified;
+        _context.SaveChanges();
     }
 }
