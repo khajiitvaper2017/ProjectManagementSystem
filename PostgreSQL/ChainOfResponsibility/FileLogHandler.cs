@@ -6,7 +6,7 @@ public sealed class FileLogHandler : OutputHandler
     {
         if (output.Type >= OutputType.Info)
         {
-            File.AppendAllText("log.txt", $"{DateTime.Today} | {output.Type}: {output.Message}");
+            File.AppendAllText("log.txt", $"{DateTime.Today} | {output.Type}: {output.Message}\n");
         }
 
         if (Successor != null)
