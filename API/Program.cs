@@ -16,7 +16,8 @@ builder.Services
                               "Integrated Security=true;" +
                               "Pooling=true")
     .AddDataAccess()
-    .AddCommands();
+    .AddCommands()
+    .AddEmailMediator();
 
 // Add services to the container.
 
