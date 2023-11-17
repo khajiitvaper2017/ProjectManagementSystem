@@ -2,7 +2,7 @@
 using PostgreSQL.Data.Entity;
 using PostgreSQL.Data.Repositories;
 using PostgreSQL.Data.UnitOfWork;
-using PostgreSQL.FactoryMethod.Report.Project;
+using PostgreSQL.Report.Project;
 
 namespace PmsAPI.Controllers.Project;
 
