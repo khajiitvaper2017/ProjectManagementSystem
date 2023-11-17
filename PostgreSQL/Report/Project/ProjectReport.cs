@@ -1,5 +1,5 @@
 ﻿using PostgreSQL.Data.Entity;
-using PostgreSQL.FactoryMethod.Report.Project.Parts;
+using PostgreSQL.Report.Project.Parts;
 
 namespace PostgreSQL.Report.Project;
 
