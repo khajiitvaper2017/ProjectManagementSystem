@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace PostgreSQL.Report.Base;
+namespace PostgreSQL.FactoryMethod.Report.Base;
 
 public abstract class Report
 {

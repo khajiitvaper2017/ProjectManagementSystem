@@ -1,4 +1,4 @@
-﻿namespace PostgreSQL.Report.Base;
+﻿namespace PostgreSQL.FactoryMethod.Report.Base;
 
 public interface IReportPart
 {
