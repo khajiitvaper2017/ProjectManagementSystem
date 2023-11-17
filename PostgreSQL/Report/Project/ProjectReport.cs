@@ -1,7 +1,7 @@
 ﻿using PostgreSQL.Data.Entity;
 using PostgreSQL.FactoryMethod.Report.Project.Parts;
 
-namespace PostgreSQL.FactoryMethod.Report.Project;
+namespace PostgreSQL.Report.Project;
 
 public sealed class ProjectReport : Base.Report
 {

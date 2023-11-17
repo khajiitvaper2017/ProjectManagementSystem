@@ -1,8 +1,8 @@
 ﻿using System.Text;
 using PostgreSQL.Data.Entity;
-using PostgreSQL.FactoryMethod.Report.Base;
+using PostgreSQL.Report.Base;
 
-namespace PostgreSQL.FactoryMethod.Report.Project.Parts;
+namespace PostgreSQL.Report.Project.Parts;
 
 public class TasksReportPart : IReportPart
 {
