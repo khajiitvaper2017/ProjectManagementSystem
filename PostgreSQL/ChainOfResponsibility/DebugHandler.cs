@@ -11,9 +11,6 @@ public sealed class DebugHandler : OutputHandler
             Debug.WriteLine(output.Message);
         }
 
-        if (Successor != null)
-        {
-            Successor.HandleRequest(output);
-        }
+        Successor?.HandleRequest(output);
     }
 }

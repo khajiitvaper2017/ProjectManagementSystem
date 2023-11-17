@@ -9,9 +9,6 @@ public sealed class ConsoleHandler : OutputHandler
             Console.WriteLine(output.Message);
         }
 
-        if (Successor != null)
-        {
-            Successor.HandleRequest(output);
-        }
+        Successor?.HandleRequest(output);
     }
 }

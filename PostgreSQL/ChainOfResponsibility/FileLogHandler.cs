@@ -9,9 +9,6 @@ public sealed class FileLogHandler : OutputHandler
             File.AppendAllText("log.txt", $"{DateTime.Today} | {output.Type}: {output.Message}\n");
         }
 
-        if (Successor != null)
-        {
-            Successor.HandleRequest(output);
-        }
+        Successor?.HandleRequest(output);
     }
 }
