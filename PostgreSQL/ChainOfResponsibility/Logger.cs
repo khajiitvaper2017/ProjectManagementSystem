@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace PostgreSQL.ChainOfResponsibility;
+﻿namespace PostgreSQL.ChainOfResponsibility;
 
 public class Logger : ILogger
 {
