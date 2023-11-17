@@ -1,6 +1,4 @@
-﻿using System.Data.Entity.Infrastructure;
-
-namespace PostgreSQL.Mediator;
+﻿namespace PostgreSQL.Mediator;
 
 public interface IEmailMediator
 {

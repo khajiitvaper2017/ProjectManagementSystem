@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PostgreSQL.Commands.Comment.Create;
-using PostgreSQL.Data.Dtos;
+using PostgreSQL.Data.Entity;
+using PostgreSQL.Data.Repositories;
+using PostgreSQL.Data.UnitOfWork;
 using PostgreSQL.Mediator;
 
 namespace PmsAPI.Controllers.Email;
@@ -12,10 +13,12 @@ namespace PmsAPI.Controllers.Email;
 public class SendEmailController : ControllerBase
 {
     private readonly IEmailMediator _emailMediator;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public SendEmailController(IEmailMediator emailMediator)
+    public SendEmailController(IEmailMediator emailMediator, IUnitOfWork unitOfWork)
     {
         _emailMediator = emailMediator;
+        _unitOfWork = unitOfWork;
     }
 
     [HttpPost]
@@ -57,6 +60,27 @@ public class SendEmailController : ControllerBase
         try
         {
             _emailMediator.AddReceiver(email);
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPost]
+    [Route("addUsersToReceivers")]
+    public IActionResult AddUsersToReceivers()
+    {
+        try
+        {
+            var users = (_unitOfWork.Repository<UserEntity>() as GenericRepository<UserEntity>).GetAll();
+
+            foreach (var user in users)
+            {
+                _emailMediator.AddReceiver(user.Email);
+            }
 
             return Ok();
         }

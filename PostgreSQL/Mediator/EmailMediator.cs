@@ -7,7 +7,7 @@ public class EmailMediator : IEmailMediator
     private readonly SmtpClient _smtpClient;
     private readonly MailAddress _senderEmail;
 
-    private readonly List<MailAddress> _receivers = new();
+    private readonly HashSet<MailAddress> _receivers = new();
     public EmailMediator(SmtpClient smtpClient, MailAddress senderEmail)
     {
         _smtpClient = smtpClient;
