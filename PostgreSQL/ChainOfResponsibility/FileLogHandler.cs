@@ -1,4 +1,4 @@
-﻿namespace PostgreSQL.ChainOfResponsibiliity;
+﻿namespace PostgreSQL.ChainOfResponsibility;
 
 public sealed class FileLogHandler : OutputHandler
 {

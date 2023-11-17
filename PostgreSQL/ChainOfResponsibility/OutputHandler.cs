@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PostgreSQL.ChainOfResponsibiliity;
+namespace PostgreSQL.ChainOfResponsibility;
 public abstract class OutputHandler
 {
     protected OutputHandler? Successor;

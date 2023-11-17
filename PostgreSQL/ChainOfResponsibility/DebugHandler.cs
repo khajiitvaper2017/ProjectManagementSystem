@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace PostgreSQL.ChainOfResponsibiliity;
+namespace PostgreSQL.ChainOfResponsibility;
 
 public sealed class DebugHandler : OutputHandler
 {

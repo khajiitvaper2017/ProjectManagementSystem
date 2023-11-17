@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using PostgreSQL.Extensions;
-using PostgreSQL.ChainOfResponsibiliity;
+using PostgreSQL.ChainOfResponsibility;
 
 var debug = new DebugHandler();
 var file = new FileLogHandler();
