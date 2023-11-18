@@ -1,5 +1,0 @@
-17.11.2023 0:00:00 | Debug: Application builded.
-17.11.2023 0:00:00 | Debug: Swagger configured.
-17.11.2023 0:00:00 | Debug: Https redirection configured.
-17.11.2023 0:00:00 | Debug: Authorization configured.
-17.11.2023 0:00:00 | Debug: Controllers mapped.

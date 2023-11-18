@@ -1,6 +1,5 @@
 ﻿namespace PostgreSQL.Data.Entity;
-
-public sealed class UserEntity : AbstractEntity.Entity
+public sealed class UserEntity : AbstractEntity.Entity, IEmailUser
 {
     public string? FirstName { get; set; }
 
@@ -17,5 +16,13 @@ public sealed class UserEntity : AbstractEntity.Entity
     public string GetFullName()
     {
         return $"{FirstName} {LastName}";
+    }
+
+    public Task ReceieveEmailAsync(string subject, string message, string sender)
+    {
+        Console.WriteLine($"Email sent to {Email} from {sender}");
+        Console.WriteLine($"Subject: {subject}");
+        Console.WriteLine($"Message: {message}");
+        return Task.CompletedTask;
     }
 }

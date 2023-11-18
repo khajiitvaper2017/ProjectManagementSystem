@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PostgreSQL.CQRS.User.Commands.Create;
 using PostgreSQL.Data.Dtos;
+using PostgreSQL.Mediator;
 
 namespace PmsAPI.Controllers.User;
 
@@ -11,9 +12,12 @@ public class CreateUserController : ControllerBase
 {
     private readonly IUserCreateCommandHandler _command;
 
-    public CreateUserController(IUserCreateCommandHandler command)
+    private readonly IEmailMediator? _emailMediator;
+
+    public CreateUserController(IUserCreateCommandHandler command, IEmailMediator? emailMediator = null)
     {
         _command = command;
+        _emailMediator = emailMediator;
     }
 
     [HttpPost]
@@ -23,6 +27,9 @@ public class CreateUserController : ControllerBase
         try
         {
             await _command.Handle(new UserCreateCommand(dto));
+            
+            await _emailMediator?.SendEmailAsync(dto.Email, "Welcome to PMS", $"{dto.FirstName} {dto.LastName}, welcome to PMS");
+
             return Ok();
         }
         catch (Exception ex)

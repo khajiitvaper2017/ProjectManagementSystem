@@ -1,6 +1,5 @@
 using System.Collections.Concurrent;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using PostgreSQL.Data.Repositories;
 using PostgreSQL.Data.Repositories.Factory;
 
@@ -24,21 +23,10 @@ public sealed class UnitOfWork : IUnitOfWork
         _context.Users.Load();
         _context.Comments.Load();
     }
-    
+
     public async Task Commit()
     {
-        await using IDbContextTransaction transaction = await _context.Database.BeginTransactionAsync();
-        try
-        {
-            await _context.SaveChangesAsync();
-            await transaction.CommitAsync();
-        }
-        catch (Exception ex)
-        {
-            await transaction.RollbackAsync();
-            
-            throw;
-        }
+        await _context.SaveChangesAsync();
     }
 
     public IRepository Repository<TEntity>() where TEntity : class
