@@ -59,7 +59,8 @@ public class SendEmailController : ControllerBase
     {
         try
         {
-            _emailMediator.AddReceiver(email);
+            var emailUser = (_unitOfWork.Repository<UserEntity>() as GenericRepository<UserEntity>).GetAll().FirstOrDefault(x => x.Email == email);
+            _emailMediator.AddReceiver(emailUser);
 
             return Ok();
         }
@@ -79,7 +80,7 @@ public class SendEmailController : ControllerBase
 
             foreach (var user in users)
             {
-                _emailMediator.AddReceiver(user.Email);
+                _emailMediator.AddReceiver(user);
             }
 
             return Ok();

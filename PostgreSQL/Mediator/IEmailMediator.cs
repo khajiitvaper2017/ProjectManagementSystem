@@ -1,4 +1,6 @@
-﻿namespace PostgreSQL.Mediator;
+﻿using PostgreSQL.Data.Entity;
+
+namespace PostgreSQL.Mediator;
 
 public interface IEmailMediator
 {
@@ -6,5 +8,5 @@ public interface IEmailMediator
 
     Task SendEmailToAllAsync(string subject, string message);
     
-    void AddReceiver(string email);
+    void AddReceiver(IEmailUser emailUser);
 }
