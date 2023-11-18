@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using PostgreSQL.ChainOfResponsibility;
 using PostgreSQL.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,17 +50,31 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
+var logger = app.Services.GetService<PostgreSQL.ChainOfResponsibility.ILogger>();
+
+logger?.Log("Application builded.", OutputType.Debug);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    logger?.Log("Swagger configured.", OutputType.Debug);
 }
 
 app.UseHttpsRedirection();
 
+logger?.Log("Https redirection configured.", OutputType.Debug);
+
 app.UseAuthorization();
+
+logger?.Log("Authorization configured.", OutputType.Debug);
 
 app.MapControllers();
 
+logger?.Log("Controllers mapped.", OutputType.Debug);
+
 app.Run();
+
+logger?.Log("Application started.", OutputType.Info);
